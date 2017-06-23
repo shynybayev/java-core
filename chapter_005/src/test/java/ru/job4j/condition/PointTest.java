@@ -14,7 +14,7 @@ import static org.hamcrest.core.Is.is;
 	*/
 public class PointTest {
 	@Test
-	public  void whenZeroPointToTwoandThreeThenFalse() {
+	public  void whenZeroPointToTwoAndThreeThenFalse() {
 		Point point = new Point(0, 0);
 		assertThat(point.is(2, 3), is(false));
 	}
