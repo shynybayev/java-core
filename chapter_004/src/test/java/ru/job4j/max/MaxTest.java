@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 /*
-*Class Maxtest тестирует метод класса Max
+*Class MaxTest тестирует метод класса Max
 @author Assan Shynybayev
 @version 2.0
 @since 1.0
@@ -33,6 +33,13 @@ public class MaxTest {
         int expected = 2;
         assertThat(result, is(expected));
     }
+	/*
+	*Тестирует метод max(int,int,int). Определяет максимум значение из трех чисел
+	*/
+	@Test
+		public  void whenZeroAndSixAndTwoThenSix() {
+		Max maximum = new Max();
+		assertThat(maximum.max(0, 6, 2), is(6));
+	}
 
-	
 }
