@@ -16,7 +16,7 @@ public class MaxTest {
 	*Тестирует метод max(int,int). Значение из первого параметра больше, чем второго. 
 	*/
 	@Test
-    public void whenOneOrOneThenTwo() {
+    public void whenFirstMoreThenSecond() {
 		
 		Max max = new Max();
 		int result = max.max(2, 1);
@@ -27,7 +27,7 @@ public class MaxTest {
 	*Тестирует метод max(int,int). Значение из первого параметра меньше, чем второго.
 	*/
     @Test
-    public void whenFirstLessThanSecond() {
+    public void whenFirstLessThenSecond() {
         Max max = new Max();
         int result = max.max(1, 2);
         int expected = 2;
