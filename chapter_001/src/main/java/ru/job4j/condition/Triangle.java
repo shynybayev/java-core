@@ -20,7 +20,11 @@ public class Triangle {
         this.b = b;
         this.c = c;
     }
-    /** Метод вычисления площади Triangle.   */
+    /** Метод вычисления площади  Triangle
+	* Вычисляем вектора
+	@return метод Math.abs() возвращает абсолютное значение  площади или  ноль если  не существует Triangle
+
+	*/
     public double area() {
         Point vectorAB = new Point(this.b.getX() - this.a.getX(),this.b.getY() - this.a.getY());
         Point vectorAC = new Point(this.c.getX() - this.a.getX(),this.c.getY() - this.a.getY());
