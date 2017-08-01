@@ -1,6 +1,6 @@
 package ru.job4j.helloworld; 
 /**
-* Class Calculate решение задачи части 001 урок 1
+* Class Calculate СЂРµС€РµРЅРёРµ Р·Р°РґР°С‡Рё С‡Р°СЃС‚Рё 001 СѓСЂРѕРє 1
 * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>
 * @version 2.0
 * @since 1.0
@@ -9,7 +9,7 @@ package ru.job4j.helloworld;
 public class Calculate{
 
 /**
-* Метод main выводит команду на экран 
+* РњРµС‚РѕРґ main РІС‹РІРѕРґРёС‚ РєРѕРјР°РЅРґСѓ РЅР° СЌРєСЂР°РЅ 
 @param args - args
 */
   public static void main(String[] args){
