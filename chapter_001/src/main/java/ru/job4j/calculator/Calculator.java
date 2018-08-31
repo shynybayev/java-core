@@ -11,7 +11,7 @@ public class Calculator {
 	/*
 	* Приватное поле result
 	*/
-	
+
 	private double result;
 	
 	/*
@@ -43,7 +43,11 @@ public class Calculator {
  	public void multiple(double first, double second){
 		this.result = first * second;
 	}
-	
+
+	/**
+	 * Метод для возвращения результата
+	 * @return result
+	 */
 	public double getResult(){
 		return this.result;
 	}

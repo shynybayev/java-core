@@ -27,8 +27,7 @@ public class TriangleTest {
     }
 	/**
 	* Тест метода.
-	* @param параметры ax,ay,bx,by,cx,cy 
-	* @return возврат Triangle area 
+	* @return возврат Triangle area
 	*/
 	private double areaTest(int ax, int ay, int bx, int by, int cx, int cy) {
 				Triangle triangle = new Triangle(new Point(ax, ay),
