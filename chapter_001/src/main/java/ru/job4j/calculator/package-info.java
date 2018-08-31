@@ -1,5 +1,5 @@
 /**
-* Package for calculate task.
+* Package for calculator task.
 *
 * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>
 * @version 2.0

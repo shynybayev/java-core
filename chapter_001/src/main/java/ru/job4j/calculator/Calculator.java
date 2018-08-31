@@ -1,10 +1,10 @@
 package ru.job4j.calculator;
 
 /**
-* Class Calculate решение задачи части 001 урок 1
+* Class Calculator
 * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>
-* @version 2.0
-* @since 1.0
+* @version 1.0
+* @since 0.1
 */
 
 public class Calculator {

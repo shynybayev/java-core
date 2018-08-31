@@ -4,11 +4,12 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-/*
-*Class MaxTest тестирует метод класса Max
-@author Assan Shynybayev
-@version 2.0
-@since 1.0
+
+/**
+* Class MaxTest тестирует метод класса Max
+* @author Assan Shynybayev
+* @version 1.0
+* @since 0.1
 */
 
 public class MaxTest {
