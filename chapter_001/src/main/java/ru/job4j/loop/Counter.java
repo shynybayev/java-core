@@ -1,23 +1,27 @@
 package ru.job4j.loop;
 
 /**
- * Counter class
+ * Class Counter
+ * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>
+ * @version 1.0
+ * @since 0.1
  */
+
 public class Counter {
 
-/** метод add которая суммирует четные числа в диапозоне от 1 до 10
-	@param start - начала диапазона
-	@param finish - конец диапазона
-	@return возвращение суммы
-*/
-   
-    public int add( int start,  int finish) {
-        int count=0;
+    /**
+     * Метод подсчета суммы четных чисел в диапазоне
+     * @param start первое число
+     * @param finish второе число
+     * @return Сумма четных чисел
+     */
+    public  static int add(int start, int finish){
+        int sum = 0;
         for (int i = start; i <= finish; i++) {
-            if ( i%2 == 0) {
-                count += i;
+            if (start%2 == 0) {
+                sum += start;
             }
         }
-        return count;
+        return sum;
     }
 }
