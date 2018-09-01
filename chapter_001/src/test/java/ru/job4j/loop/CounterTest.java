@@ -5,13 +5,18 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * CounterTest class
+ * Test
+ * @author Assan Shynybayev
+ * @version 2.0
+ * @since 1.0
  */
+
 public class CounterTest {
-    /** 
-     * тестирование сложение суммы четных элементов
+
+    /**
+     * Тест для сравнения сумму четных чисел в диапозоне
      */
-	@Test
+    @Test
     public void whenCounterIsTrue() {
         Counter counter = new Counter();
         assertThat( 30, is( counter.add(1, 10)));
