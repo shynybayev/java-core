@@ -15,7 +15,7 @@ public class Converter{
 	*/
 
 	public int tengeToEuro(int value){
-		return 423 / value;
+		return value / 423;
 	}
 
 	/**
@@ -25,7 +25,7 @@ public class Converter{
 	*/
 
 	public int tengeToDollar(int value){
-		return 363 / value;
+		return value / 363;
 	}
 
 	/**
