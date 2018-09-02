@@ -15,6 +15,23 @@ import static org.junit.Assert.assertThat;
 
 public class PaintTest{
 	@Test
+	public void whenPyramidMain(){
+		Paint paint = new Paint();
+		String res = paint.pyramid(4);
+		System.out.println(res);
+		assertThat(res, is(
+				new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+						.add("   ^   ")
+						.add("  ^^^  ")
+						.add(" ^^^^^ ")
+                        .add("^^^^^^^")
+                        .toString()
+			)
+        );
+	}
+
+
+	@Test
 	public void whenPyramidRight(){
 		Paint paint = new Paint();
 		String res = paint.rightTrl(4);
