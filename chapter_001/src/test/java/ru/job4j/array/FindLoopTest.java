@@ -16,4 +16,14 @@ public class FindLoopTest{
 		int expected = 0;
 		assertThat(result, is(expected));
 	}
+
+	@Test
+	public void whenArraysElementNotFound(){
+		FindLoop find = new FindLoop();
+		int[] data = new int[]{1, 10, 3};
+		int el = 5;
+		int result = find.indexOf(data, el);
+		int expected = -1;
+		assertThat(result, is(expected));
+	}
 }
