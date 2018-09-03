@@ -13,8 +13,14 @@ public class Check{
 		boolean result = false;
 
 		for (int i = 0; i < data.length; i++) {
- 		 	result = (data[i] | result) & (data[i] ^ result);
+			if (data[0] ^ data[i] ) {
+				result = false;
+				break;
+			} else {
+				result = true;
+			}
 		}
 		return result;
 	}
+
 }

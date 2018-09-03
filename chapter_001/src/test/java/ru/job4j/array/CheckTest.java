@@ -13,32 +13,37 @@ import static org.junit.Assert.assertThat;
 */
 
 public class CheckTest {
-	
+
 	@Test
 	public void whenDataMonoByTrueThenTrue(){
-		Check ch = new Check();
+		Check check = new Check();
 		boolean[] input = new boolean[]{true, true, true};
-		boolean res = ch.mono(input);
-		boolean expected = true;
-		assertThat(res, is(expected));
+		boolean res = check.mono(input);
+		assertThat(res, is(true));
 	}
 
 	@Test
 	public void whenDataNotMonoByTrueThenFalse(){
-		Check ch = new Check();
+		Check check = new Check();
 		boolean[] input = new boolean[]{true, false, true};
-		boolean res = ch.mono(input);
-		boolean expected = false;
-		assertThat(res, is(expected));
+		boolean res = check.mono(input);
+		assertThat(res, is(false));
 	}
 
 	@Test
-	public void whenDataNotMonoByFalseThenTrue(){
-		Check ch = new Check();
+	public void whenDataWithOddAmountOfElements(){
+		Check check = new Check();
 		boolean[] input = new boolean[]{false, false, false};
-		boolean res = ch.mono(input);
-		boolean expected = true;
-		assertThat(res, is(expected));
+		boolean res = check.mono(input);
+		assertThat(res, is(true));
+	}
+
+	@Test
+	public void whenDataWithEvenAmountOfElements(){
+		Check check = new Check();
+		boolean[] input = new boolean[]{true, false, true, false};
+		boolean res = check.mono(input);
+		assertThat(res, is(false));
 	}
 
 }
