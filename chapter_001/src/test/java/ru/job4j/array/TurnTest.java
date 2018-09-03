@@ -22,4 +22,12 @@ public class TurnTest{
 		int[] expected = new int[]{10, 2, 5, 1};
 		assertThat(result, is(expected));
 	}
+
+	@Test
+	public void whenTurnArrayWithOddAmountOfElementsThenTurnedArray(){
+		Turn turn = new Turn();
+		int[] input = new int[]{1, 5, 2, 10};
+ 		int[] result = turn.turn(input);
+ 		
+	}
 }
