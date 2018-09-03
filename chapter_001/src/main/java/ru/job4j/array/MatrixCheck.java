@@ -12,9 +12,13 @@ import java.util.Arrays;
 public class MatrixCheck{
 	public boolean mono(boolean[][] data){
 		boolean result = true;
+		int index = data.length;
 
 		for (int i = 0; i < data.length; i++) {
-			if ((data[i][i] != data[0][0]) | (data[i][i] != data[1][1]) | (data[i][i] != data[2][2])){
+			if ((data[i][i] != data[0][0])){
+				result = false;
+				break;
+			} else if (data[i][i] != data[0][index-1]) {
 				result = false;
 				break;
 			}
