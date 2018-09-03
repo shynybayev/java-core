@@ -30,8 +30,8 @@ public class MatrixCheckTest{
 	public void whenDataNotMonoByTrueThenFalse(){
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
-				{true, true, false},
-				{false, false, true},
+				{true, false, true},
+				{false, false, false},
 				{true, false, true}
 		};
 		boolean res = matrixCheck.mono(input);
@@ -47,7 +47,7 @@ public class MatrixCheckTest{
 				{false, false, false}
 		};
 		boolean res = matrixCheck.mono(input);
-		assertThat(res, is(true));
+		assertThat(res, is(false));
 	}
 
 	@Test
@@ -60,7 +60,7 @@ public class MatrixCheckTest{
 				{true, true, true, true}
 		};
 		boolean res = matrixCheck.mono(input);
-		assertThat(res, is(true));
+		assertThat(res, is(false));
 	}
 	
 }
