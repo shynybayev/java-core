@@ -18,7 +18,7 @@ public class MatrixCheck{
 			if ((data[i][i] != data[0][0])){
 				result = false;
 				break;
-			} else if (data[i][i] != data[0][index-1]) {
+			} else if (data[i][i] != data[i][index-1]) {
 				result = false;
 				break;
 			}
