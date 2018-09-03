@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class BubbleSort{
 
 	public int[] sort(int[] array){
-		for (int i = 0; i < array.length ; i++) {
+		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < i ; j++) {
 				if (array[i] < array[j]) {
 					int temp = array[i];
@@ -25,8 +25,4 @@ public class BubbleSort{
 		return array;
 	}
 
-	public static void main(String[] args) {
-		BubbleSort bubbleSort = new BubbleSort();
-		System.out.println(Arrays.toString(bubbleSort.sort(new int[]{2,6,4,3})));
-	}
 }
