@@ -51,19 +51,6 @@ public class MatrixCheckTest{
 	}
 
 	@Test
-	public void whenArrayWithEvenAmountOfElementsThenFalse(){
-		MatrixCheck matrixCheck = new MatrixCheck();
-		boolean[][] input = new boolean[][]{
-				{false, false, false, false},
-				{true, true, true, true},
-				{false, false, false, false},
-				{true, true, true, true}
-		};
-		boolean res = matrixCheck.mono(input);
-		assertThat(res, is(false));
-	}
-
-	@Test
 	public void whenArrayWithEvenAmountOfElementsThenTrue(){
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
@@ -75,5 +62,19 @@ public class MatrixCheckTest{
 		boolean res = matrixCheck.mono(input);
 		assertThat(res, is(true));
 	}
-	
+
+	@Test
+	public void whenArrayWithEvenAmountOfElementsThenFalse(){
+		MatrixCheck matrixCheck = new MatrixCheck();
+		boolean[][] input = new boolean[][]{
+				{false, false, false, false},
+				{true,  false, true,  true},
+				{false, true, false,  false},
+				{true,  true,  true,  false}
+		};
+		boolean res = matrixCheck.mono(input);
+		assertThat(res, is(false));
+	}
+
+
 }
