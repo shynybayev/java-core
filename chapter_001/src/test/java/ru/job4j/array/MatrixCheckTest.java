@@ -39,7 +39,7 @@ public class MatrixCheckTest{
 	}
 
 	@Test
-	public void whenTurnArrayWithOddAmountOfElementsThenTurnedArray(){
+	public void whenArrayWithOddAmountOfElementsThenFalse(){
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
 				{false, false, false},
@@ -51,7 +51,7 @@ public class MatrixCheckTest{
 	}
 
 	@Test
-	public void whenTurnArrayWithEvenAmountOfElementsThenTurnedArray(){
+	public void whenArrayWithEvenAmountOfElementsThenFalse(){
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
 				{false, false, false, false},
@@ -61,6 +61,19 @@ public class MatrixCheckTest{
 		};
 		boolean res = matrixCheck.mono(input);
 		assertThat(res, is(false));
+	}
+
+	@Test
+	public void whenArrayWithEvenAmountOfElementsThenTrue(){
+		MatrixCheck matrixCheck = new MatrixCheck();
+		boolean[][] input = new boolean[][]{
+				{false, false, false, true},
+				{true,  false, true,  true},
+				{false, true, false,  false},
+				{true,  true,  true,  false}
+		};
+		boolean res = matrixCheck.mono(input);
+		assertThat(res, is(true));
 	}
 	
 }
