@@ -55,15 +55,16 @@ public class TrackerTest {
     @Test
     public void whenDeleteItemFindByIdI(){
         Tracker tracker = new Tracker();
+        Item first = new Item("testId", "testName", 123L);
+        tracker.add(first);
+        Item second = new Item("testId2", "testName", 212L);
+        tracker.add(second);
 
-        Item item = new Item("testId", "testName", 123L);
-        tracker.add(item);
+        Item[] array = new Item[1];
+        array[0] = second;
 
-        Item item1 = new Item("testId2", "testName", 212L);
-        tracker.add(item1);
-
-        tracker.delete(item.getId());
-        assertThat(item1, is(tracker.getAll()));
+        tracker.delete(first.getId());
+        assertThat(array, is(tracker.getAll()));
     }
 
     @Test
