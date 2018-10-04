@@ -21,8 +21,7 @@ public class Tracker {
      * @return Уникальный ключ.
      */
     private String generateId() {
-//        return String.valueOf(Math.random());
-        return "1";
+        return String.valueOf(Math.random());
     }
 
     /**
@@ -50,7 +49,7 @@ public class Tracker {
 
         for (int i = 0; i < position; i++) {
             if (!items[i].getName().equals(key)){
-                
+
             }
         }
         temp = Arrays.copyOf(items, position);
@@ -109,19 +108,4 @@ public class Tracker {
         }
          return Arrays.copyOf(items, position);
      }
-
-    public static void main(String[] args) {
-        Tracker tracker = new Tracker();
-        String id = tracker.generateId();
-        String name = "Task";
-        Item item = new Item(id,name, 22l);
-        System.out.println("ADD: " + tracker.add(item));
-        System.out.println("ID: " + id);
-        System.out.println("Find by ID: " + tracker.findById(id));
-        System.out.println("Find by NAME: " + tracker.findByName(name));
-//         tracker.delete(id);
-        for (int i = 0; i < tracker.getAll().length; i++) {
-            System.out.println("ALL: " + tracker.getAll()[i]);
-        }
-    }
 }
