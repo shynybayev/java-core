@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.Iterator;
-
 /**
  * Класс заявок
  * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>

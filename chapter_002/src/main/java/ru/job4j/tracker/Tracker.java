@@ -21,7 +21,8 @@ public class Tracker {
      * @return Уникальный ключ.
      */
     private String generateId() {
-        return String.valueOf(Math.random());
+//        return String.valueOf(Math.random());
+        return "1";
     }
 
     /**
@@ -34,8 +35,6 @@ public class Tracker {
         for (int i = 0; i < position; i++) {
             if (items[i].getId().equals(id)){
                 item = items[i];
-            } else {
-              item = null;
             }
         }
         return item;
@@ -47,12 +46,15 @@ public class Tracker {
      * @return список заявок.
      */
     public Item[] findByName(String key){
-        Item[] temp = new Item[position];
+        Item[] temp ;
+
         for (int i = 0; i < position; i++) {
-            if (items[i].getName().equals(key)){
-               temp = Arrays.copyOf(items, position);
+            if (!items[i].getName().equals(key)){
+                
             }
         }
+        temp = Arrays.copyOf(items, position);
+
         return temp;
     }
 
@@ -72,17 +74,20 @@ public class Tracker {
      * @param id передаваемый id
      */
     public void delete(String id){
-        Item[] temp = new Item[position];
-         for (int i = 0; i < position; i++) {
+
+        for (int i = 0; i < position; i++) {
             if (items[i].getId().equals(id)){
-                System.arraycopy(items, i, temp, 0 , position - 1);
+                items[i] = items[position];
+                position--;
+                System.arraycopy(items, i +  1, items, 0, position);
             }
         }
+
     }
 
 
     public void replace(String id, Item item){
-
+        item.setId(id);
         for (int i = 0; i < position ; i++) {
             if (id.equals(item.getId())){
                   items[i] = item;
@@ -96,12 +101,27 @@ public class Tracker {
      */
     public Item[] getAll(){
         Item[] temp = null;
-        for (int i = 0; i < position ; i++) {
-            if (items[i] != null){
-                temp = Arrays.copyOf(items, position);
+
+        for (int i = 0; i < position; i++) {
+            if (items[i] == null){
+                return temp;
             }
         }
-        return temp;
-    }
+         return Arrays.copyOf(items, position);
+     }
 
+    public static void main(String[] args) {
+        Tracker tracker = new Tracker();
+        String id = tracker.generateId();
+        String name = "Task";
+        Item item = new Item(id,name, 22l);
+        System.out.println("ADD: " + tracker.add(item));
+        System.out.println("ID: " + id);
+        System.out.println("Find by ID: " + tracker.findById(id));
+        System.out.println("Find by NAME: " + tracker.findByName(name));
+//         tracker.delete(id);
+        for (int i = 0; i < tracker.getAll().length; i++) {
+            System.out.println("ALL: " + tracker.getAll()[i]);
+        }
+    }
 }

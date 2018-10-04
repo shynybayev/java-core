@@ -59,8 +59,11 @@ public class TrackerTest {
         Item item = new Item("testId", "testName", 123L);
         tracker.add(item);
 
+        Item item1 = new Item("testId2", "testName", 212L);
+        tracker.add(item1);
+
         tracker.delete(item.getId());
-        assertThat(tracker.findById(item.getId()), is(item));
+        assertThat(item1, is(tracker.getAll()));
     }
 
     @Test
