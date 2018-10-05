@@ -45,16 +45,15 @@ public class Tracker {
      * @return список заявок.
      */
     public Item[] findByName(String key){
-        Item[] temp ;
-
+        Item[] temp = new Item[position];
+        int count = 0;
         for (int i = 0; i < position; i++) {
-            if (!items[i].getName().equals(key)){
-
+            if (items[i].getName().equals(key)){
+                temp[count++] = items[i];
             }
         }
-        temp = Arrays.copyOf(items, position);
 
-        return temp;
+        return Arrays.copyOf(temp, position);
     }
 
     /**
@@ -99,13 +98,6 @@ public class Tracker {
      * @return список всех заявок
      */
     public Item[] getAll(){
-        Item[] temp = null;
-
-        for (int i = 0; i < position; i++) {
-            if (items[i] == null){
-                return temp;
-            }
-        }
-         return Arrays.copyOf(items, position);
+       return Arrays.copyOf(items, position);
      }
 }
