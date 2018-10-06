@@ -73,7 +73,6 @@ public class Tracker {
     public void delete(String id){
         for (int i = 0; i < position; i++) {
             if (items[i].getId().equals(id)){
-                items[i] = items[position];
                 position--;
                 System.arraycopy(items, i +  1, items, 0, position);
             }

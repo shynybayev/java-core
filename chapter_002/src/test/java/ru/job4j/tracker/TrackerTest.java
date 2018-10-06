@@ -16,7 +16,7 @@ public class TrackerTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem(){
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName", 123L);
+        Item item = new Item("testId", "testName");
         tracker.add(item);
         assertThat(tracker.getAll()[0], is(item));
     }
@@ -24,26 +24,26 @@ public class TrackerTest {
     @Test
     public void whenReplaceNameThenReturnNewName(){
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1", "testDescription", 123L);
+        Item previous = new Item("test1", "testDescription");
         //Добавляем заявку в трекер. Теперь в объект проиницолизирован ID
         tracker.add(previous);
         //Создаем новую заявку
-        Item newItem = new Item("test2", "testDescription2", 1234L);
+        Item newItem = new Item("test2", "testDescription2");
         //Проставляем старый Id из previous, который  был сгенирирован выше
         newItem.setId(previous.getId());
         //Обновляем заявку в трекере
         tracker.replace(previous.getId(), newItem);
         //Проверяем что заявка с таким ID имеет новое имя test2
-        assertThat(tracker.findById(previous.getId()).getName(), is("testDescription2"));
+        assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
 
     @Test
     public void whenFindByNameThenReturnItemWithGetName(){
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName", 123L);
+        Item item = new Item("testId", "testName");
         tracker.add(item);
 
-        Item item2 = new Item("testId2", "testName", 1234L);
+        Item item2 = new Item("testId2", "testName");
         String input =  item2.getName();
 
         Item[] result = tracker.findByName(input);
@@ -55,9 +55,9 @@ public class TrackerTest {
     @Test
     public void whenDeleteItemFindByIdI(){
         Tracker tracker = new Tracker();
-        Item first = new Item("testId", "testName", 123L);
+        Item first = new Item("testId", "testName");
         tracker.add(first);
-        Item second = new Item("testId2", "testName", 212L);
+        Item second = new Item("testId2", "testName");
         tracker.add(second);
 
         Item[] array = new Item[1];
@@ -70,7 +70,7 @@ public class TrackerTest {
     @Test
     public void whenFindByIdThenReturnItemFoundId(){
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName", 122L);
+        Item item = new Item("testId", "testName");
         Item itemNull = null;
 
         tracker.add(item);
@@ -87,7 +87,7 @@ public class TrackerTest {
     @Test
     public void whenGetAllItemsCopyWithoutNullElements(){
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName", 213L);
+        Item item = new Item("testId", "testName");
 
         tracker.add(item);
         Item[] result = tracker.getAll();
