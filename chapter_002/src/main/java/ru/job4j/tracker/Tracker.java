@@ -52,8 +52,7 @@ public class Tracker {
                 temp[count++] = items[i];
             }
         }
-
-        return Arrays.copyOf(temp, position);
+        return Arrays.copyOf(temp, count);
     }
 
     /**
@@ -72,7 +71,6 @@ public class Tracker {
      * @param id передаваемый id
      */
     public void delete(String id){
-
         for (int i = 0; i < position; i++) {
             if (items[i].getId().equals(id)){
                 items[i] = items[position];
@@ -80,7 +78,6 @@ public class Tracker {
                 System.arraycopy(items, i +  1, items, 0, position);
             }
         }
-
     }
 
 
