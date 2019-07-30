@@ -14,21 +14,20 @@ import static org.junit.Assert.assertThat;
 public class TrackerTest {
 
     @Test
-    public void whenAddNewItemThenTrackerHasSameItem(){
+    public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName");
+        Item item = new Item("testId", "testName", 123L);
         tracker.add(item);
-        assertThat(tracker.getAll()[0], is(item));
+        assertThat(tracker.findAll()[0], is(item));
     }
 
     @Test
-    public void whenReplaceNameThenReturnNewName(){
+    public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1", "testDescription");
-        //Добавляем заявку в трекер. Теперь в объект проиницолизирован ID
-        tracker.add(previous);
+        Item previous = new Item("test1", "testDescription", 123L);
+        tracker.add(previous); //Добавляем заявку в трекер. Теперь в объектe проинициализирован ID
         //Создаем новую заявку
-        Item newItem = new Item("test2", "testDescription2");
+        Item newItem = new Item("test2", "testDescription2", 1234L);
         //Проставляем старый Id из previous, который  был сгенирирован выше
         newItem.setId(previous.getId());
         //Обновляем заявку в трекере
@@ -38,59 +37,55 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenFindByNameThenReturnItemWithGetName(){
+    public void whenFindByNameThenReturnItemWithGetName() {
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName");
+        Item item = new Item("someName", "testDesc", 123L);
         tracker.add(item);
 
-        Item item2 = new Item("testId2", "testName");
+        Item item2 = new Item("someName", "someDesc", 1234L);
         String input =  item2.getName();
 
         Item[] result = tracker.findByName(input);
-
         Item[] expected = new Item[]{item};
-        assertThat(result,is(expected));
-     }
+        assertThat(result, is(expected));
+    }
 
     @Test
-    public void whenDeleteItemFindByIdI(){
+    public void whenDeleteItemFindByIdI() {
         Tracker tracker = new Tracker();
-        Item first = new Item("testId", "testName");
+        Item first = new Item("someName", "testName", 123L);
         tracker.add(first);
-        Item second = new Item("testId2", "testName");
+        Item second = new Item("someName", "testName", 1234L);
         tracker.add(second);
 
         Item[] array = new Item[1];
         array[0] = second;
 
         tracker.delete(first.getId());
-        assertThat(array, is(tracker.getAll()));
+        assertThat(array, is(tracker.findAll()));
     }
 
     @Test
-    public void whenFindByIdThenReturnItemFoundId(){
+    public void whenFindByIdThenReturnItemFoundId() {
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName");
-        Item itemNull = null;
-
+        Item item = new Item("someName", "someDescription", 123L);
+        Item emptyItem = new Item(null, null, 0L);
         tracker.add(item);
         Item result = tracker.findById(item.getId());
 
-        if (result != null){
+        if (result != null) {
             assertThat(result, is(item));
         } else {
-            assertThat(result, is(itemNull));
+            assertThat(result, is(emptyItem));
         }
-
     }
 
     @Test
-    public void whenGetAllItemsCopyWithoutNullElements(){
+    public void whenGetAllItemsCopyWithoutNullElements() {
         Tracker tracker = new Tracker();
-        Item item = new Item("testId", "testName");
-
+        Item item = new Item("someName", "someDescription", 123L);
         tracker.add(item);
-        Item[] result = tracker.getAll();
+        Item[] result = tracker.findAll();
         Item[] expected = new Item[]{item};
         assertThat(result, is(expected));
     }

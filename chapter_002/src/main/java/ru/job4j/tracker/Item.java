@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.Objects;
+
 /**
  * Класс заявок
  * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>
@@ -12,9 +14,10 @@ public class Item {
     private String desc;
     private long created;
 
-    public Item(String name, String desc){
+    Item(String name, String desc, long created) {
         this.name = name;
         this.desc = desc;
+        this.created = created;
     }
 
     public String getId() {
@@ -50,11 +53,22 @@ public class Item {
     }
 
     @Override
-    public String toString() {
-        return "Item{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", desc='" + desc + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Item)) {
+            return false;
+        }
+        Item item = (Item) o;
+        return created == item.created
+                && Objects.equals(id, item.id)
+                && Objects.equals(name, item.name)
+                && Objects.equals(desc, item.desc);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, desc, created);
     }
 }

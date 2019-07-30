@@ -12,6 +12,11 @@ import java.util.Scanner;
 public class ConsoleInput implements Input {
     private Scanner sc = new Scanner(System.in);
 
+    /**
+     * Метод выведа вопроса, возвращает оператор ввода строки с консоли
+     * @param question вопрос
+     * @return оператор ввода с консоли
+     */
     @Override
     public String ask(String question) {
         System.out.print(question);
@@ -21,7 +26,8 @@ public class ConsoleInput implements Input {
     @Override
     public void print(String data) {
         Tracker tracker = new Tracker();
-        tracker.findById(data);
+        for (Item item: tracker.findAll()) {
+            System.out.println(item);
+        }
     }
-
 }

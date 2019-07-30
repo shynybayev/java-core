@@ -9,7 +9,7 @@ package ru.job4j.tracker;
 public class MenuTracker {
      private Action[] actions;
 
-//    public Action select(Action[] index){
-//
-//    }
+    public Action select(Action[] index) {
+          return  null;
+    }
 }

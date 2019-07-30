@@ -7,7 +7,7 @@ package ru.job4j.tracker;
  * @since 0.1
  */
 public class Action {
-    public void execute(Tracker tracker, Input input){
+    public void execute(Tracker tracker, Input input) {
 
     }
 }
