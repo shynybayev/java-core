@@ -79,12 +79,16 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         boolean isReplaced = false;
         item.setId(id);
-        for (int i = 0; i < position; i++) {
-            if (id.equals(item.getId())) {
-                this.items[i] = item;
-                isReplaced = true;
-                break;
+        try {
+            for (int i = 0; i < position; i++) {
+                if (id.equals(item.getId())) {
+                    this.items[i] = item;
+                    isReplaced = true;
+                    break;
+                }
             }
+        } catch (NullPointerException e) {
+            System.err.println("Заявка по " + id + "не найдено");
         }
         return isReplaced;
     }

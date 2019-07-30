@@ -20,6 +20,13 @@ public class Item {
         this.created = created;
     }
 
+    Item(String id, String name, String desc, long created) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.created = created;
+    }
+
     public String getId() {
         return id;
     }
@@ -70,5 +77,15 @@ public class Item {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, desc, created);
+    }
+
+    @Override
+    public String toString() {
+        return "Item{"
+                + "id='" + id + '\''
+                + ", name='" + name + '\''
+                + ", desc='" + desc + '\''
+                + ", created=" + created
+                + '}';
     }
 }
