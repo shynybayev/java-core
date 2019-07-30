@@ -68,7 +68,6 @@ public class StartUI {
 
     private void createItem() {
         System.out.println("- Добавление новой заявки -");
-//        String id =  this.input.ask("Введите ID заявки: ");
         String name = this.input.ask("Введите имя заявки : ");
         String desc = this.input.ask("Введите описание заявки :");
         long created = System.currentTimeMillis();
