@@ -51,7 +51,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenDeleteItemFindByIdI() {
+    public void whenDeleteItemFindById() {
         Tracker tracker = new Tracker();
         Item first = new Item("someName", "testName", 123L);
         tracker.add(first);
