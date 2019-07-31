@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class PaintTest {
     @Test
-    public void whenUserPaintShapes() {
+    public void whenUserPaintSquare() {
         // получаем ссылку на стандартный вывод в консоль.
         PrintStream stdout = System.out;
         // Создаем буфeр для хранения вывода.
@@ -31,6 +31,26 @@ public class PaintTest {
                                 .toString())
         );
         // возвращаем обратно стандартный вывод в консоль.
+        System.setOut(stdout);
+    }
+
+    @Test
+    public void whenUserPaintTriangle() {
+        PrintStream stdout = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        new Paint().draw(new Triangle());
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append("   *\n")
+                                .append("  ***  \n")
+                                .append(" ***** \n")
+                                .append("******* \n")
+                                .append(System.lineSeparator())
+                                .toString())
+        );
         System.setOut(stdout);
     }
 }
