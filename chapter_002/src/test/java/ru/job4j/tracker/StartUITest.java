@@ -1,16 +1,45 @@
 package ru.job4j.tracker;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
+    private final PrintStream stdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    @Before
+    public void loadOutput() {
+        System.setOut(new PrintStream(this.out));
+    }
+
+    @After
+    public void backOutput() {
+        System.setOut(this.stdout);
+    }
+
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker(); //создаем объект класса Tracker
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"}); //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+    }
+
+    @Test
+    public void whenUserWantToSeeShowAllItem() {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"1", "6"});
+        Item item = tracker.add(new Item("test name", "desc", 1235L));
+        Item[] items = new Item[]{item};
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll(), is(items));
     }
 
     @Test
