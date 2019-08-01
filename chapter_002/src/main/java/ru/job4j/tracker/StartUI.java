@@ -117,7 +117,7 @@ public class StartUI {
         System.out.println("Заявка по имени: " + name + " : " + Arrays.toString(byName));
     }
 
-    private void showMenu() {
+    public void showMenu() {
         System.out.println("Выберите пункт меню:\n "
                 + "0. Add new Item\n"
                 + "1. Show all items\n"

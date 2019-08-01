@@ -33,16 +33,6 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUserWantToSeeShowAllItem() {
-        Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"1", "6"});
-        Item item = tracker.add(new Item("test name", "desc", 1235L));
-        Item[] items = new Item[]{item};
-        new StartUI(input, tracker).init();
-        assertThat(tracker.findAll(), is(items));
-    }
-
-    @Test
     public void whenUpdateThenTrackerHasUpdateValue() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
@@ -82,5 +72,23 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findByName(item.getName()), is(items));
+    }
+
+    @Test
+    public void whenUserClickToShowMenu() {
+        new StartUI(new ConsoleInput(), new Tracker()).showMenu();
+        assertThat(new String(out.toByteArray()), is(
+                        new StringBuilder()
+                            .append("Выберите пункт меню:\n ")
+                            .append("0. Add new Item\n")
+                            .append("1. Show all items\n")
+                            .append("2. Edit item\n")
+                            .append("3. Delete item\n")
+                            .append("4. Find item by Id\n")
+                            .append("5. Find items by name\n")
+                            .append("6. Exit Program\n")
+                            .append(System.lineSeparator())
+                            .toString())
+        );
     }
 }
