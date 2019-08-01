@@ -13,7 +13,7 @@ public class ConsoleInput implements Input {
     private Scanner sc = new Scanner(System.in);
 
     /**
-     * Метод выведа вопроса, возвращает оператор ввода строки с консоли
+     * Метод вывода вопроса, возвращает оператор ввода строки с консоли
      * @param question вопрос
      * @return оператор ввода с консоли
      */

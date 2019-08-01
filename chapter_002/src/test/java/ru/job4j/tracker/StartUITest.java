@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -13,6 +14,18 @@ import static org.junit.Assert.*;
 public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final String menu = new StringBuilder()
+                .append("Выберите пункт меню:\n ")
+                .append("0. Add new Item\n")
+                .append("1. Show all items\n")
+                .append("2. Edit item\n")
+                .append("3. Delete item\n")
+                .append("4. Find item by Id\n")
+                .append("5. Find items by name\n")
+                .append("6. Exit Program\n")
+                .append(System.lineSeparator())
+                .toString();
+
 
     @Before
     public void loadOutput() {
@@ -75,20 +88,15 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUserClickToShowMenu() {
-        new StartUI(new ConsoleInput(), new Tracker()).showMenu();
+    public void whenCheckUserActions() {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"1", "6"});
+        Item item = tracker.add(new Item("1", "desc", 123L));
+        Item[] items = new Item[]{item};
+        new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                        new StringBuilder()
-                            .append("Выберите пункт меню:\n ")
-                            .append("0. Add new Item\n")
-                            .append("1. Show all items\n")
-                            .append("2. Edit item\n")
-                            .append("3. Delete item\n")
-                            .append("4. Find item by Id\n")
-                            .append("5. Find items by name\n")
-                            .append("6. Exit Program\n")
-                            .append(System.lineSeparator())
-                            .toString())
-        );
+                menu + Arrays.toString(items) + "\r" + "\n"
+                        + menu
+        ));
     }
 }
