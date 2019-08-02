@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.lang.String;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -88,15 +89,75 @@ public class StartUITest {
     }
 
     @Test
-    public void whenCheckUserActions() {
+    public void whenUserClickToAddItem() {
         Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(
+                menu + "- Добавление новой заявки -" + "\r" + "\n"
+                        + "Новая заявка " + tracker.findAll()[0] + " создана" + "\r" + "\n" + menu
+        ));
+    }
+
+    @Test
+    public void whenUseClickToShowAllItems() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[]{"1", "6"});
-        Item item = tracker.add(new Item("1", "desc", 123L));
         Item[] items = new Item[]{item};
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
                 menu + Arrays.toString(items) + "\r" + "\n"
                         + menu
+        ));
+    }
+
+    @Test
+    public void whenUseChooseToReplaceItem() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test name", "desc", 123L));
+        Input input = new StubInput(new String[]{"2", item.getId(), "test2", "desc2", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(
+                menu + "- Редактирования заявки -" + "\r"
+                        + "\n" + "Заявка по ID : " + item.getId() + " обновлена" + "\r" + "\n" + menu
+        ));
+    }
+
+    @Test
+    public void whenUserChooseToDeleteItem() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test name", "desc", 123L));
+        Input input = new StubInput(new String[]{"3", item.getId(), "6"});
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(
+                menu + "- Удаление заявки -" + "\r" + "\n"
+                + "Заявки с ID: " + item.getId() + " была удалена" + "\r" + "\n" + menu
+        ));
+    }
+
+    @Test
+    public void whenUserChooseToFindById() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test name", "desc", 123L));
+        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(
+                menu + "- Поиск заявки по ID -" + "\r"
+                        + "\n" + "Имя заявки по ID: " + item + "\r" + "\n" + menu
+        ));
+    }
+
+    @Test
+    public void whenUserChooseToFindByName() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test name", "desc", 123L));
+        Input input = new StubInput(new String[]{"5", item.getName(), "6"});
+        Item[] items = new Item[]{item};
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(
+                menu + "- Поиск заявки по Имени -" + "\r" + "\n" + "Заявка по имени: " + item.getName() + " : "
+                + Arrays.toString(items) + "\r" + "\n" + menu
         ));
     }
 }
