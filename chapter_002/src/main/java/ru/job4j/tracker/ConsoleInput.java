@@ -22,12 +22,4 @@ public class ConsoleInput implements Input {
         System.out.print(question);
         return sc.nextLine();
     }
-
-    @Override
-    public void print(String data) {
-        Tracker tracker = new Tracker();
-        for (Item item: tracker.findAll()) {
-            System.out.println(item);
-        }
-    }
 }

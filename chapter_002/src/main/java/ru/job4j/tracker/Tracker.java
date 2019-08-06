@@ -76,13 +76,13 @@ public class Tracker {
      * Обновление заявок по id
      * @param id передаваемый id
      */
-    public boolean replace(String id, Item item) {
+    public boolean replace(String id, Item fresh) {
         boolean isReplaced = false;
-        item.setId(id);
+        fresh.setId(id);
         try {
             for (int i = 0; i < position; i++) {
-                if (id.equals(item.getId())) {
-                    this.items[i] = item;
+                if (items[i].getId().equals(fresh.getId())) {
+                    items[i] = fresh;
                     isReplaced = true;
                     break;
                 }

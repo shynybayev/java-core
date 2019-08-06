@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -69,14 +70,13 @@ public class TrackerTest {
     public void whenFindByIdThenReturnItemFoundId() {
         Tracker tracker = new Tracker();
         Item item = new Item("someName", "someDescription", 123L);
-        Item emptyItem = new Item(null, null, 0L);
         tracker.add(item);
         Item result = tracker.findById(item.getId());
 
         if (result != null) {
             assertThat(result, is(item));
         } else {
-            assertThat(result, is(emptyItem));
+            assertNull(result);
         }
     }
 

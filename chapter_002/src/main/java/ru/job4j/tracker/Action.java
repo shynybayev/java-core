@@ -6,8 +6,20 @@ package ru.job4j.tracker;
  * @version 1.0
  * @since 0.1
  */
-public class Action {
-    public void execute(Tracker tracker, Input input) {
+public class Action  implements UserAction{
 
+    @Override
+    public int key() {
+        return 0;
+    }
+
+    @Override
+    public void execute(Input input, Tracker tracker) {
+
+    }
+
+    @Override
+    public String info() {
+        return null;
     }
 }

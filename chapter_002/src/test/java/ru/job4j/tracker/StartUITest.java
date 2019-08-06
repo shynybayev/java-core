@@ -16,14 +16,15 @@ public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String menu = new StringBuilder()
-                .append("Выберите пункт меню:\n ")
-                .append("0. Add new Item\n")
+                .append("Choose action:\n ")
+                .append("0. Add the new Item\n")
                 .append("1. Show all items\n")
-                .append("2. Edit item\n")
-                .append("3. Delete item\n")
-                .append("4. Find item by Id\n")
+                .append("2. Update item\n")
+                .append("3. Delete item by ID\n")
+                .append("4. Find item by ID\n")
                 .append("5. Find items by name\n")
                 .append("6. Exit Program\n")
+                .append("Select:\n")
                 .append(System.lineSeparator())
                 .toString();
 
@@ -63,9 +64,8 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[]{"3", item.getId(), "6"});
-        String empty = null;
         new StartUI(input, tracker).init();
-        assertThat(tracker.findById(item.getId()), is(empty));
+        assertNull(tracker.findById(item.getId()));
     }
 
     @Test
@@ -94,9 +94,11 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Добавление новой заявки -" + "\r" + "\n"
-                        + "Новая заявка " + tracker.findAll()[0] + " создана" + "\r" + "\n" + menu
-        ));
+                menu + "- Adding the new item -" + System.lineSeparator()
+                        + "-New Item with Id : " + tracker.findAll()[0].getId() + System.lineSeparator()
+                        + "-New Item with Name : " + tracker.findAll()[0].getName() + System.lineSeparator()
+                        + "-New Item with Description : " + tracker.findAll()[0].getDesc() + menu)
+        );
     }
 
     @Test
@@ -107,7 +109,7 @@ public class StartUITest {
         Item[] items = new Item[]{item};
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + Arrays.toString(items) + "\r" + "\n"
+                menu + Arrays.toString(items) + System.lineSeparator()
                         + menu
         ));
     }
@@ -119,8 +121,8 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"2", item.getId(), "test2", "desc2", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Редактирования заявки -" + "\r"
-                        + "\n" + "Заявка по ID : " + item.getId() + " обновлена" + "\r" + "\n" + menu
+                menu + "- Редактирования заявки -" + System.lineSeparator()
+                        + "Заявка по ID : " + item.getId() + " обновлена" + System.lineSeparator() + menu
         ));
     }
 
@@ -131,8 +133,8 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"3", item.getId(), "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Удаление заявки -" + "\r" + "\n"
-                + "Заявки с ID: " + item.getId() + " была удалена" + "\r" + "\n" + menu
+                menu + "- Удаление заявки -" + System.lineSeparator()
+                + "Заявки с ID: " + item.getId() + " была удалена" + System.lineSeparator() + menu
         ));
     }
 
@@ -143,8 +145,8 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"4", item.getId(), "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Поиск заявки по ID -" + "\r"
-                        + "\n" + "Имя заявки по ID: " + item + "\r" + "\n" + menu
+                menu + "- Поиск заявки по ID -" + System.lineSeparator()
+                        + "Имя заявки по ID: " + item + System.lineSeparator() + menu
         ));
     }
 
@@ -156,8 +158,8 @@ public class StartUITest {
         Item[] items = new Item[]{item};
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Поиск заявки по Имени -" + "\r" + "\n" + "Заявка по имени: " + item.getName() + " : "
-                + Arrays.toString(items) + "\r" + "\n" + menu
+                menu + "- Поиск заявки по Имени -" + System.lineSeparator() + "Заявка по имени: " + item.getName() + " : "
+                + Arrays.toString(items) + System.lineSeparator() + menu
         ));
     }
 }

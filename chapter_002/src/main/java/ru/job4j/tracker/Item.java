@@ -14,14 +14,7 @@ public class Item {
     private String desc;
     private long created;
 
-    Item(String name, String desc, long created) {
-        this.name = name;
-        this.desc = desc;
-        this.created = created;
-    }
-
-    Item(String id, String name, String desc, long created) {
-        this.id = id;
+    public Item(String name, String desc, long created) {
         this.name = name;
         this.desc = desc;
         this.created = created;
