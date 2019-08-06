@@ -22,4 +22,17 @@ public class ConsoleInput implements Input {
         System.out.print(question);
         return sc.nextLine();
     }
+
+//    @Override
+//    public int ask(String question, int[] rang) {
+//        int key = Integer.valueOf(this.ask(question));
+//        boolean isExist = false;
+//        for (int value : rang){
+//            if (value == key){
+//                isExist = true;
+//                break;
+//            }
+//        }
+//        return isExist ? key : -1;
+//    }
 }

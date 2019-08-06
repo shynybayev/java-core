@@ -18,6 +18,13 @@ public class StartUI {
     private final Tracker tracker;
 
     /**
+     * значени которое поулчаем из меню
+     */
+    private int[] ranges = new int[]{1, 2, 3, 4};
+
+    private boolean flagToExit = true;
+
+    /**
      * Конструтор инициализирующий поля.
      * @param input ввод данных.
      * @param tracker хранилище заявок.
@@ -32,13 +39,18 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions(); //заполняет наши данные
+        menu.fillActions(this);
 
         do {
             menu.show();
-            int key = Integer.valueOf(input.ask("Select: "));
+            int key = Integer.valueOf(this.input.ask("Select: "));
             menu.selectKey(key);
-        } while (!"y".equals(this.input.ask("Exit?(y) :")));
+//            menu.selectKey(input.ask(" Select: ", ranges));
+        } while (this.flagToExit);
+    }
+
+    public void stop() {
+        this.flagToExit = false;
     }
 
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import com.sun.tools.javadoc.Start;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,14 +51,14 @@ public class MenuTracker {
     /**
      * Метод заполняет массив.
      */
-    public void fillActions() {
-        this.actions.add(new AddItem(this.input, this.tracker));         //в качестве заполнения используем внетренний класс
+    public void fillActions(StartUI ui) {
+        this.actions.add(new AddItem(this.input, this.tracker));
         this.actions.add(new ShowItems(this.input, this.tracker));
         this.actions.add(new EditItem(this.input, this.tracker));
         this.actions.add(new DeleteItem(this.input, this.tracker));
         this.actions.add(new FindItemByID(this.input, this.tracker));
         this.actions.add(new FindItemByName(this.input, this.tracker));
-        this.actions.add(new ExitProgram(this.input, this.tracker));
+        this.actions.add(new ExitProgram(ui));
     }
 
     /**
@@ -265,12 +267,9 @@ public class MenuTracker {
     }
 
     private class ExitProgram implements UserAction {
-        private Input input;
-        private Tracker tracker;
-
-        public ExitProgram(Input input, Tracker tracker) {
-            this.input = input;
-            this.tracker = tracker;
+        private final StartUI ui;
+        public ExitProgram(StartUI ui) {
+            this.ui = ui;
         }
 
         @Override
@@ -281,7 +280,7 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("Program is closed");
-            System.exit(0);
+            this.ui.stop();
         }
 
         @Override
