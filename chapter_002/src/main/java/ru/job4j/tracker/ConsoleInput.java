@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -23,16 +24,20 @@ public class ConsoleInput implements Input {
         return sc.nextLine();
     }
 
-//    @Override
-//    public int ask(String question, int[] rang) {
-//        int key = Integer.valueOf(this.ask(question));
-//        boolean isExist = false;
-//        for (int value : rang){
-//            if (value == key){
-//                isExist = true;
-//                break;
-//            }
-//        }
-//        return isExist ? key : -1;
-//    }
+    @Override
+    public int ask(String question, List<Integer> rang) {
+        int key = Integer.valueOf(this.ask(question));
+        boolean isExist = false;
+        for (int value : rang) {
+            if (value == key) {
+                isExist = true;
+                break;
+            }
+        }
+        if (isExist) {
+            return key;
+        } else {
+            throw new MenuOutOfException("Out of menu range");
+        }
+    }
 }

@@ -16,16 +16,14 @@ public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String menu = new StringBuilder()
-                .append("Choose action:\n ")
-                .append("0. Add the new Item\n")
-                .append("1. Show all items\n")
-                .append("2. Update item\n")
-                .append("3. Delete item by ID\n")
-                .append("4. Find item by ID\n")
-                .append("5. Find items by name\n")
-                .append("6. Exit Program\n")
-                .append("Select:\n")
-                .append(System.lineSeparator())
+                .append("Choose action:" + System.lineSeparator())
+                .append("0. Add the new Item" + System.lineSeparator())
+                .append("1. Show all items" + System.lineSeparator())
+                .append("2. Update item" + System.lineSeparator())
+                .append("3. Delete item by ID" + System.lineSeparator())
+                .append("4. Find item by ID" + System.lineSeparator())
+                .append("5. Find item by name" + System.lineSeparator())
+                .append("6. Exit program" + System.lineSeparator())
                 .toString();
 
 
@@ -44,7 +42,10 @@ public class StartUITest {
         Tracker tracker = new Tracker(); //создаем объект класса Tracker
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"}); //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        assertThat(tracker.findAll()[0].getName(), is(
+                "test name")
+                ); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+
     }
 
     @Test
@@ -97,7 +98,8 @@ public class StartUITest {
                 menu + "- Adding the new item -" + System.lineSeparator()
                         + "-New Item with Id : " + tracker.findAll()[0].getId() + System.lineSeparator()
                         + "-New Item with Name : " + tracker.findAll()[0].getName() + System.lineSeparator()
-                        + "-New Item with Description : " + tracker.findAll()[0].getDesc() + menu)
+                        + "-New Item with Description : " + tracker.findAll()[0].getDesc()
+                        + System.lineSeparator() +  menu + "Program is closed" + System.lineSeparator())
         );
     }
 
@@ -106,11 +108,13 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[]{"1", "6"});
-        Item[] items = new Item[]{item};
+//        Item[] items = new Item[]{item};
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + Arrays.toString(items) + System.lineSeparator()
-                        + menu
+                menu + "Item id: " + item.getId() + " "
+                        + "Name: " + item.getName() + " "
+                        + "Description: " + item.getDesc() + System.lineSeparator()
+                        + menu + "Program is closed" + System.lineSeparator()
         ));
     }
 
@@ -121,8 +125,9 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"2", item.getId(), "test2", "desc2", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Редактирования заявки -" + System.lineSeparator()
-                        + "Заявка по ID : " + item.getId() + " обновлена" + System.lineSeparator() + menu
+                menu + "- Updating item -" + System.lineSeparator()
+                        + "The task with ID: " + item.getId() + " has updated" + System.lineSeparator()
+                        + menu + "Program is closed" + System.lineSeparator()
         ));
     }
 
@@ -133,8 +138,9 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"3", item.getId(), "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Удаление заявки -" + System.lineSeparator()
-                + "Заявки с ID: " + item.getId() + " была удалена" + System.lineSeparator() + menu
+                menu + "- Deleting item -" + System.lineSeparator()
+                + "The task with ID: " + item.getId() + " has deleted" + System.lineSeparator()
+                + menu + "Program is closed" + System.lineSeparator()
         ));
     }
 
@@ -145,8 +151,9 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"4", item.getId(), "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Поиск заявки по ID -" + System.lineSeparator()
-                        + "Имя заявки по ID: " + item + System.lineSeparator() + menu
+                menu + "- Find item by id -" + System.lineSeparator()
+                        + "Found item by id : " + item + System.lineSeparator()
+                        + menu + "Program is closed" + System.lineSeparator()
         ));
     }
 
@@ -158,8 +165,10 @@ public class StartUITest {
         Item[] items = new Item[]{item};
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
-                menu + "- Поиск заявки по Имени -" + System.lineSeparator() + "Заявка по имени: " + item.getName() + " : "
-                + Arrays.toString(items) + System.lineSeparator() + menu
+                menu + "- Find item by name -" + System.lineSeparator()
+                        + "Item by name: " + item.getName() + " : "
+                        + Arrays.toString(items) + System.lineSeparator()
+                        + menu + "Program is closed" + System.lineSeparator()
         ));
     }
 }

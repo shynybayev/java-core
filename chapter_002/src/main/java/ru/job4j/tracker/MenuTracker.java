@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import com.sun.tools.javadoc.Start;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +23,7 @@ public class MenuTracker {
     /**
      * @param хранит ссылку на массив типа UserAction.
      */
-    private List<UserAction> actions = new ArrayList<>(); //массив действий
+    private List<UserAction> actions = new ArrayList<>(); //список действий
     private static final int ADD = 0;
     private static final int EXIT = 6;
 
@@ -44,7 +42,7 @@ public class MenuTracker {
      *
      * @return длину массива
      */
-    public int getActionLength(){
+    public int getActionLength() {
         return this.actions.size();
     }
 
@@ -76,7 +74,7 @@ public class MenuTracker {
     public void show() {
         System.out.println("Choose action:");
         for (UserAction action: actions) {
-            if (action!=null) {
+            if (action != null) {
                 System.out.println(action.info());
             }
         }
@@ -86,7 +84,7 @@ public class MenuTracker {
         private Input input;
         private Tracker tracker;
 
-        public AddItem(Input in, Tracker tr){
+        public AddItem(Input in, Tracker tr) {
             input = in;
             tracker = tr;
         }
@@ -119,7 +117,7 @@ public class MenuTracker {
         private Input input;
         private Tracker tracker;
 
-        public ShowItems(Input input, Tracker tracker){
+        public ShowItems(Input input, Tracker tracker) {
             this.input = input;
             this.tracker = tracker;
         }
@@ -158,6 +156,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
+            System.out.println("- Updating item -");
             String id = input.ask("Please, enter the task ID: ");
             String name = input.ask("Please, enter the new task name: ");
             String description = input.ask("Please, enter the new task description: ");
@@ -182,7 +181,7 @@ public class MenuTracker {
         private Input input;
         private Tracker tracker;
 
-        public DeleteItem(Input in, Tracker tr){
+        public DeleteItem(Input in, Tracker tr) {
             this.input = in;
             this.tracker = tr;
         }

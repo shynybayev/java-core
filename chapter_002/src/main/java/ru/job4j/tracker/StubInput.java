@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 /**
  * класс заглушка
  */
@@ -42,8 +44,20 @@ public class StubInput implements Input {
         return answers[position++];
     }
 
-//    @Override
-//    public int ask(String question, int[] rang) {
-//        return -1;
-//    }
+    @Override
+    public int ask(String question, List<Integer> rang) {
+        int key = Integer.valueOf(this.ask(question));
+        boolean isExist = false;
+        for (int value : rang) {
+            if (value == key) {
+                isExist = true;
+                break;
+            }
+        }
+        if (isExist) {
+            return key;
+        } else {
+            throw new MenuOutOfException("Out of menu range");
+        }
+    }
 }

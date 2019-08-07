@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 /**
  * Интерфейс
  * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>
@@ -8,5 +10,5 @@ package ru.job4j.tracker;
  */
 public interface Input {
     String ask(String question);
-//    int ask(String question, int[] rang);
+    int ask(String question, List<Integer> rang);
 }

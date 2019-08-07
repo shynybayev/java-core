@@ -1,5 +1,8 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Класс - точка входа в приложение
  * @author <a href="mailto:shynybaev@gmail.com">Assan Shynybayev</a>
@@ -11,16 +14,10 @@ public class StartUI {
      * Получение данных от пользователя.
      */
     private final Input input;
-
     /**
      * Хранилище заявок.
      */
     private final Tracker tracker;
-
-    /**
-     * значени которое поулчаем из меню
-     */
-    private int[] ranges = new int[]{1, 2, 3, 4};
 
     private boolean flagToExit = true;
 
@@ -39,13 +36,14 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
         menu.fillActions(this);
-
+        for (int i = 0; i < menu.getActionLength(); i++) {
+            range.add(i);
+        }
         do {
             menu.show();
-            int key = Integer.valueOf(this.input.ask("Select: "));
-            menu.selectKey(key);
-//            menu.selectKey(input.ask(" Select: ", ranges));
+            menu.selectKey(input.ask(" Select: ", range));
         } while (this.flagToExit);
     }
 
@@ -54,6 +52,6 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
