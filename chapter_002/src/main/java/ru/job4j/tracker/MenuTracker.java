@@ -24,8 +24,7 @@ public class MenuTracker {
      * @param хранит ссылку на массив типа UserAction.
      */
     private List<UserAction> actions = new ArrayList<>(); //список действий
-    private static final int ADD = 0;
-    private static final int EXIT = 6;
+    private int position = 0;
 
     /**
      * Конструктор.
@@ -50,13 +49,13 @@ public class MenuTracker {
      * Метод заполняет массив.
      */
     public void fillActions(StartUI ui) {
-        this.actions.add(new AddItem(this.input, this.tracker));
-        this.actions.add(new ShowItems(this.input, this.tracker));
-        this.actions.add(new EditItem(this.input, this.tracker));
-        this.actions.add(new DeleteItem(this.input, this.tracker));
-        this.actions.add(new FindItemByID(this.input, this.tracker));
-        this.actions.add(new FindItemByName(this.input, this.tracker));
-        this.actions.add(new ExitProgram(ui));
+        this.actions.add(position++, new AddItem(0, "Add a new item"));
+        this.actions.add(position++, new ShowItems(1, "Show all items"));
+        this.actions.add(position++, new EditItem(2, "Update item"));
+        this.actions.add(position++, new DeleteItem(3, "Delete item by ID"));
+        this.actions.add(position++, new FindItemByID(4, "Find item by ID"));
+        this.actions.add(position++, new FindItemByName(5, "Find item by name"));
+        this.actions.add(position++, new ExitProgram(ui, 6, "Exit program"));
     }
 
     /**
@@ -80,18 +79,10 @@ public class MenuTracker {
         }
     }
 
-    private class AddItem implements UserAction {
-        private Input input;
-        private Tracker tracker;
+    private class AddItem extends BaseAction {
 
-        public AddItem(Input in, Tracker tr) {
-            input = in;
-            tracker = tr;
-        }
-
-        @Override
-        public int key() {
-            return ADD;
+        public AddItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -106,52 +97,31 @@ public class MenuTracker {
             System.out.println("-New Item with Name : " + item.getName());
             System.out.println("-New Item with Description : " + item.getDesc());
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add the new Item"); //возвращает строку содержащее 0. Add the new Item
-        }
     }
 
-    private class ShowItems implements UserAction {
-        private Input input;
-        private Tracker tracker;
+    private class ShowItems extends BaseAction {
 
-        public ShowItems(Input input, Tracker tracker) {
-            this.input = input;
-            this.tracker = tracker;
-        }
-
-        @Override
-        public int key() {
-            return 1;
+        public ShowItems(int key, String name) {
+            super(key, name);
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            for (Item item: tracker.findAll()) {
-                System.out.println("Item id: " + item.getId() + " Name: " + item.getName() + " Description: " + item.getDesc());
+            Item[] items = tracker.findAll();
+            if (items.length > 0) {
+                for (Item item: tracker.findAll()) {
+                    System.out.println("Item id: " + item.getId() + " Name: " + item.getName() + " Description: " + item.getDesc());
+                }
+            } else {
+                System.out.println("List of items is empty");
             }
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show all items");
         }
     }
 
-    private class EditItem implements UserAction {
-        private Input input;
-        private Tracker tracker;
+    private class EditItem extends BaseAction {
 
-        public EditItem(Input input, Tracker tracker) {
-            this.input = input;
-            this.tracker = tracker;
-        }
-
-        @Override
-        public int key() {
-            return 2;
+        public EditItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -169,26 +139,13 @@ public class MenuTracker {
                 System.out.println("The task with ID: " + freshItem.getId() + " not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Update item");
-        }
     }
 
-    private class DeleteItem implements UserAction {
+    private class DeleteItem extends BaseAction {
 
-        private Input input;
-        private Tracker tracker;
 
-        public DeleteItem(Input in, Tracker tr) {
-            this.input = in;
-            this.tracker = tr;
-        }
-
-        @Override
-        public int key() {
-            return 3;
+        public DeleteItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -202,25 +159,12 @@ public class MenuTracker {
                 System.out.println("The task with ID: " + id + " not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Delete item by ID"); //возвращает строку содержащее 0. Add the new Item
-        }
     }
 
-    private class FindItemByID implements UserAction {
-        private Input input;
-        private Tracker tracker;
+    private class FindItemByID extends BaseAction {
 
-        public FindItemByID(Input input, Tracker tracker) {
-            this.input = input;
-            this.tracker = tracker;
-        }
-
-        @Override
-        public int key() {
-            return 4;
+        public FindItemByID(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -230,25 +174,12 @@ public class MenuTracker {
             Item byID = tracker.findById(id);
             System.out.println("Found item by id : " + byID);
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by ID"); //возвращает строку содержащее 0. Add the new Item
-        }
     }
 
-    private class FindItemByName implements UserAction {
-        private Input input;
-        private Tracker tracker;
+    private class FindItemByName extends BaseAction {
 
-        public FindItemByName(Input input, Tracker tracker) {
-            this.input = input;
-            this.tracker = tracker;
-        }
-
-        @Override
-        public int key() {
-            return 5;
+        public FindItemByName(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -258,33 +189,19 @@ public class MenuTracker {
             Item[] byName = tracker.findByName(name);
             System.out.println("Item by name: " + name + " : " + Arrays.toString(byName));
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by name");
-        }
     }
 
-    private class ExitProgram implements UserAction {
+    private class ExitProgram extends BaseAction {
         private final StartUI ui;
-        public ExitProgram(StartUI ui) {
+        public ExitProgram(StartUI ui, int key, String name) {
+            super(key, name);
             this.ui = ui;
-        }
-
-        @Override
-        public int key() {
-            return EXIT;
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("Program is closed");
             this.ui.stop();
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Exit program");
         }
     }
 }

@@ -17,13 +17,13 @@ public class StartUITest {
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String menu = new StringBuilder()
                 .append("Choose action:" + System.lineSeparator())
-                .append("0. Add the new Item" + System.lineSeparator())
-                .append("1. Show all items" + System.lineSeparator())
-                .append("2. Update item" + System.lineSeparator())
-                .append("3. Delete item by ID" + System.lineSeparator())
-                .append("4. Find item by ID" + System.lineSeparator())
-                .append("5. Find item by name" + System.lineSeparator())
-                .append("6. Exit program" + System.lineSeparator())
+                .append("0 : Add a new item" + System.lineSeparator())
+                .append("1 : Show all items" + System.lineSeparator())
+                .append("2 : Update item" + System.lineSeparator())
+                .append("3 : Delete item by ID" + System.lineSeparator())
+                .append("4 : Find item by ID" + System.lineSeparator())
+                .append("5 : Find item by name" + System.lineSeparator())
+                .append("6 : Exit program" + System.lineSeparator())
                 .toString();
 
 
