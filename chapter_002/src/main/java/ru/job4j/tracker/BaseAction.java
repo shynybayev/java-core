@@ -5,7 +5,7 @@ package ru.job4j.tracker;
  * @version 1.0
  * @since 0.1
  */
-public class BaseAction implements UserAction {
+public abstract class BaseAction implements UserAction {
     private final int key;
     private final String name;
 
@@ -17,10 +17,6 @@ public class BaseAction implements UserAction {
     @Override
     public int key() {
         return this.key;
-    }
-
-    @Override
-    public void execute(Input input, Tracker tracker) {
     }
 
     @Override
