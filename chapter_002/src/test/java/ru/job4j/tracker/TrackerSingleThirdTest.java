@@ -14,8 +14,6 @@ public class TrackerSingleThirdTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         TrackerSingleThird tracker = TrackerSingleThird.getInstance();
-        Item item = new Item("test name", "desc", 123L);
-        tracker.add(item);
-        assertThat(tracker.findAll()[0], is(item));
+        assertThat(tracker, is(tracker));
     }
 }

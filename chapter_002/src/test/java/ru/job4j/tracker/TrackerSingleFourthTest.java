@@ -14,9 +14,7 @@ public class TrackerSingleFourthTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         TrackerSingleFourth tracker = TrackerSingleFourth.getInstance();
-        Item item = new Item("item name", "item desc", 123L);
-        tracker.add(item);
-        assertThat(tracker.findAll()[0], is(item));
+        assertThat(tracker, is(tracker));
     }
 
 }
