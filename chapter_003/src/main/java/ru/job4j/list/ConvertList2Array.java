@@ -1,5 +1,9 @@
 package ru.job4j.list;
 
+import com.sun.org.apache.bcel.internal.generic.BREAKPOINT;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,24 +13,41 @@ import java.util.List;
  * @since 0.1
  */
 public class ConvertList2Array {
+    /**
+     * Конвертация списка в двумерный массив
+     * @param list список
+     * @param rows столбцы
+     * @return двумерный массив
+     */
     public int[][] toArray(List<Integer> list, int rows) {
-        List<Integer> newlist = new LinkedList<>();
-        newlist.addAll(list);
+        int cells = list.size()/rows;
 
-        int cells = rows;
+        if (cells != 0) {
+            cells += 1;
+        }
+
         int[][] array = new int[rows][cells];
         int index = 0;
 
-        while (newlist.size() % rows != 0) {
-            newlist.add(list.size(), 0);
-        }
-
-        for (int[] temp: array) {
-            for (int i = 0; i < temp.length; i++) {
-                temp[i] = newlist.get(index++);
+        for (int[] tempArray: array) {
+            for (int i = 0; i < cells; i++) {
+                tempArray[i] = index < list.size() ? list.get(index) : 0;
+                index++;
             }
         }
 
         return array;
+    }
+
+
+    public List<Integer> convert(List<int[]> listOfArray) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int[] array : listOfArray) {
+            for (int i : array) {
+                result.add(i);
+            }
+        }
+        return result;
     }
 }
