@@ -12,7 +12,7 @@ public class UserConvert {
     public HashMap<Integer, User> process(List<User> list) {
         HashMap<Integer, User> mapUser =  new HashMap<>();
         for (int i = 0; i < list.size(); i++) {
-           mapUser.put(i, list.get(i));
+           mapUser.put(list.get(i).getId(), list.get(i));
         }
 
         return mapUser;
