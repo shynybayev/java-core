@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -19,7 +22,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("testId", "testName", 123L);
         tracker.add(item);
-        assertThat(tracker.findAll()[0], is(item));
+        assertThat(tracker.findAll().get(0), is(item));
     }
 
     @Test
@@ -42,12 +45,12 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("someName", "testDesc", 123L);
         tracker.add(item);
-
         Item item2 = new Item("someName", "someDesc", 1234L);
         String input =  item2.getName();
+        ArrayList<Item> result = tracker.findByName(input);
+        ArrayList<Item> expected = new ArrayList<>();
+        expected.add(item);
 
-        Item[] result = tracker.findByName(input);
-        Item[] expected = new Item[]{item};
         assertThat(result, is(expected));
     }
 
@@ -58,12 +61,11 @@ public class TrackerTest {
         tracker.add(first);
         Item second = new Item("someName", "testName", 1234L);
         tracker.add(second);
-
-        Item[] array = new Item[1];
-        array[0] = second;
-
+        ArrayList<Item> arrayList = new ArrayList<>();
+        arrayList.add(0, second);
         tracker.delete(first.getId());
-        assertThat(array, is(tracker.findAll()));
+
+        assertThat(arrayList, is(tracker.findAll()));
     }
 
     @Test
@@ -85,8 +87,10 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("someName", "someDescription", 123L);
         tracker.add(item);
-        Item[] result = tracker.findAll();
-        Item[] expected = new Item[]{item};
+        ArrayList<Item> result = tracker.findAll();
+        ArrayList<Item> expected = new ArrayList<>();
+        expected.add(item);
+
         assertThat(result, is(expected));
     }
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.String;
 
@@ -42,7 +43,7 @@ public class StartUITest {
         Tracker tracker = new Tracker(); //создаем объект класса Tracker
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"}); //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init(); //создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is(
+        assertThat(tracker.findAll().get(0).getName(), is(
                 "test name")
                 ); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
 
@@ -82,10 +83,11 @@ public class StartUITest {
     public void whenUserFindItemByNameThenTrackerReturnItemWithTheSameName() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
-        Item[] items = new Item[1];
-        items[0] = item;
+        ArrayList items = new ArrayList();
+        items.add(0, item);
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
         new StartUI(input, tracker).init();
+
         assertThat(tracker.findByName(item.getName()), is(items));
     }
 
@@ -96,9 +98,9 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
                 menu + "- Adding the new item -" + System.lineSeparator()
-                        + "-New Item with Id : " + tracker.findAll()[0].getId() + System.lineSeparator()
-                        + "-New Item with Name : " + tracker.findAll()[0].getName() + System.lineSeparator()
-                        + "-New Item with Description : " + tracker.findAll()[0].getDesc()
+                        + "-New Item with Id : " + tracker.findAll().get(0).getId() + System.lineSeparator()
+                        + "-New Item with Name : " + tracker.findAll().get(0).getName() + System.lineSeparator()
+                        + "-New Item with Description : " + tracker.findAll().get(0).getDesc()
                         + System.lineSeparator() +  menu + "Program is closed" + System.lineSeparator())
         );
     }
@@ -108,7 +110,6 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[]{"1", "6"});
-//        Item[] items = new Item[]{item};
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
                 menu + "Item id: " + item.getId() + " "
@@ -162,12 +163,13 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
-        Item[] items = new Item[]{item};
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(item);
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(
                 menu + "- Find item by name -" + System.lineSeparator()
                         + "Item by name: " + item.getName() + " : "
-                        + Arrays.toString(items) + System.lineSeparator()
+                        + items.toString() + System.lineSeparator()
                         + menu + "Program is closed" + System.lineSeparator()
         ));
     }

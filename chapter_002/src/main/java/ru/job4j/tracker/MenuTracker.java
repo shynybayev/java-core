@@ -107,8 +107,9 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            Item[] items = tracker.findAll();
-            if (items.length > 0) {
+//            Item[] items = tracker.findAll();
+            ArrayList<Item> items = tracker.findAll();
+            if (items.size() > 0) {
                 for (Item item: tracker.findAll()) {
                     System.out.println("Item id: " + item.getId() + " Name: " + item.getName() + " Description: " + item.getDesc());
                 }
@@ -186,8 +187,9 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("- Find item by name -");
             String name = input.ask("Please, enter the task name: ");
-            Item[] byName = tracker.findByName(name);
-            System.out.println("Item by name: " + name + " : " + Arrays.toString(byName));
+//            Item[] byName = tracker.findByName(name);
+            ArrayList<Item> byName = tracker.findByName(name);
+            System.out.println("Item by name: " + name + " : " + byName.toString());
         }
     }
 
