@@ -107,8 +107,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-//            Item[] items = tracker.findAll();
-            ArrayList<Item> items = tracker.findAll();
+            List<Item> items = tracker.findAll();
             if (items.size() > 0) {
                 for (Item item: tracker.findAll()) {
                     System.out.println("Item id: " + item.getId() + " Name: " + item.getName() + " Description: " + item.getDesc());

@@ -11,9 +11,7 @@ import java.util.List;
  * @since 0.1
  */
 public class Tracker {
-    private Item[] items = new Item[100];
-
-    private ArrayList<Item> listOfItems = new ArrayList<>();
+    private List<Item> listOfItems = new ArrayList<>();
     private int position = 0;
 
     /**
@@ -90,8 +88,7 @@ public class Tracker {
         try {
             for (int i = 0; i < position; i++) {
                 if (listOfItems.get(i).getId().equals(fresh.getId())) {
-//                    listOfItems.add(fresh);
-                    listOfItems.add(i, fresh);
+                    listOfItems.set(i, fresh);
                     isReplaced = true;
                     break;
                 }
@@ -106,7 +103,7 @@ public class Tracker {
      * Получение списка всех заявок
      * @return список всех заявок
      */
-    public ArrayList<Item> findAll() {
+    public List<Item> findAll() {
         return listOfItems;
     }
 
