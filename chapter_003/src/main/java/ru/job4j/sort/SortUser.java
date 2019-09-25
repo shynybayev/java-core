@@ -22,7 +22,13 @@ public class SortUser {
         Collections.sort(userList, new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
-                return o1.getName().compareTo(o2.getName());
+                int result = o1.getName().compareTo(o2.getName());
+
+                if (result == 0) {
+                    result = o2.getName().compareTo(o1.getName());
+                }
+
+                return result;
             }
         });
 
