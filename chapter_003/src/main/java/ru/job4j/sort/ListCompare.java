@@ -14,6 +14,10 @@ public class ListCompare implements Comparator<String> {
             }
         }
 
+        if (result == 0) {
+            result =  Integer.compare(o1.length(), o2.length());
+        }
+
         return result;
     }
 }
