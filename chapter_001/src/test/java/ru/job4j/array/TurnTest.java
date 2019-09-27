@@ -12,10 +12,10 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public class TurnTest{
+public class TurnTest {
 
 	@Test
-	public void whenTurnArrayWithOddAmountOfElementsThenTurnedArray(){
+	public void whenTurnArrayWithOddAmountOfElementsThenTurnedArray() {
 		Turn turn = new Turn();
 		int[] input = new int[]{1, 5, 2, 10};
 		int[] result = turn.turn(input);
@@ -24,7 +24,7 @@ public class TurnTest{
 	}
 
 	@Test
-	public void whenTurnArrayWithEvenAmountOfElementsThenTurnedArray(){
+	public void whenTurnArrayWithEvenAmountOfElementsThenTurnedArray() {
 		Turn turn = new Turn();
 		int[] input = new int[]{7, 5, 2, 10, 3};
 		int[] result = turn.turn(input);

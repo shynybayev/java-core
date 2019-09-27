@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public class SquareTest{
+public class SquareTest {
 
 	@Test
 	public  void  whenBound3Then149() {

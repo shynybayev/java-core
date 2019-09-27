@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class CheckTest {
 
 	@Test
-	public void whenDataMonoByTrueThenTrue(){
+	public void whenDataMonoByTrueThenTrue() {
 		Check check = new Check();
 		boolean[] input = new boolean[]{true, true, true};
 		boolean res = check.mono(input);
@@ -23,7 +23,7 @@ public class CheckTest {
 	}
 
 	@Test
-	public void whenDataNotMonoByTrueThenFalse(){
+	public void whenDataNotMonoByTrueThenFalse() {
 		Check check = new Check();
 		boolean[] input = new boolean[]{true, false, true};
 		boolean res = check.mono(input);
@@ -31,7 +31,7 @@ public class CheckTest {
 	}
 
 	@Test
-	public void whenDataWithOddAmountOfElements(){
+	public void whenDataWithOddAmountOfElements() {
 		Check check = new Check();
 		boolean[] input = new boolean[]{false, false, false};
 		boolean res = check.mono(input);
@@ -39,7 +39,7 @@ public class CheckTest {
 	}
 
 	@Test
-	public void whenDataWithEvenAmountOfElements(){
+	public void whenDataWithEvenAmountOfElements() {
 		Check check = new Check();
 		boolean[] input = new boolean[]{true, false, true, false};
 		boolean res = check.mono(input);

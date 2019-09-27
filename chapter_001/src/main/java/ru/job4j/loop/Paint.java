@@ -7,14 +7,14 @@ package ru.job4j.loop;
 * @since 0.1
 */
 
-public class Paint{
-	public String pyramid(int height){
+public class Paint {
+	public String pyramid(int height) {
 		StringBuilder str = new StringBuilder();
 		int weight = 2 * height - 1;
 
 		for (int row = 0; row != height; row++) {
 			for (int column = 0; column != weight; column++) {
-				if (row >= height - column - 1 && row + height - 1 >= column){
+				if (row >= height - column - 1 && row + height - 1 >= column) {
 					str.append("^");
 				} else {
 					str.append(" ");
@@ -26,13 +26,13 @@ public class Paint{
 		return str.toString();
 	}
 
-	public String rightTrl(int height){
+	public String rightTrl(int height) {
 		StringBuilder str = new StringBuilder(); // Буфер для результата.
 		int weight = height;	// ширина будет равна высоте.
 		// внешний цикл двигается по строкам.
 		for (int row = 0; row != height; row++) {
 			// внутренний цикл определяет положение ячейки в строке.
-			for (int column = 0; column != weight ; column++) {
+			for (int column = 0; column != weight; column++) {
 				// если строка равна ячейки, то рисуем галку.
 				// в данном случае строка определяем, сколько галок будет на строке
 				if (row >= column) {
@@ -47,7 +47,7 @@ public class Paint{
 	}
 
 
-	public String leftTrl(int height){
+	public String leftTrl(int height) {
 		StringBuilder str = new StringBuilder();
 		int weight = height;
 

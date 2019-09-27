@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class FindLoopTest{
+public class FindLoopTest {
 	
 	@Test
-	public void whenArrayHasLength5Then0(){
+	public void whenArrayHasLength5Then0() {
 		FindLoop find = new FindLoop();
 		int[] data = new int[]{5, 10, 3};
 		int el = 5;
@@ -18,7 +18,7 @@ public class FindLoopTest{
 	}
 
 	@Test
-	public void whenArraysElementNotFound(){
+	public void whenArraysElementNotFound() {
 		FindLoop find = new FindLoop();
 		int[] data = new int[]{1, 10, 3};
 		int el = 5;

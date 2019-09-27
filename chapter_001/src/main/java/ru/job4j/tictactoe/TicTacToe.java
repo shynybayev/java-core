@@ -28,7 +28,7 @@ public class TicTacToe extends Application {
     private final Figure3T[][] cells = new  Figure3T[size][size];
     private final Logic3T logic = new  Logic3T(cells);
 
-    private Figure3T buildRectangle(int x, int y, int size){
+    private Figure3T buildRectangle(int x, int y, int size) {
         Figure3T rect = new Figure3T();
         rect.setX(x * size);
         rect.setY(y * size);
@@ -39,7 +39,7 @@ public class TicTacToe extends Application {
         return rect;
     }
 
-    private Group buildMarkO(double x, double y, int size){
+    private Group buildMarkO(double x, double y, int size) {
         Group group = new Group();
         int radius = size / 2;
         Circle circle = new Circle(x + radius, y + radius, radius - 10);
@@ -49,7 +49,7 @@ public class TicTacToe extends Application {
         return group;
     }
 
-    private  void showAlert(String message){
+    private  void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(JOB4J);
         alert.setHeaderText(null);
@@ -57,15 +57,15 @@ public class TicTacToe extends Application {
         alert.showAndWait();
     }
 
-    private boolean checkState(){
+    private boolean checkState() {
         boolean gap = this.logic.hasGap();
-        if (!gap){
+        if (!gap) {
             this.showAlert("Все поля заполнены! Начните новую игру");
         }
         return gap;
     }
 
-    private void checkWinner(){
+    private void checkWinner() {
         if (this.logic.isWinnerX()) {
             this.showAlert("Победили крестики, начните новую Игру!");
         } else if (this.logic.isWinnerO()) {
@@ -73,7 +73,7 @@ public class TicTacToe extends Application {
         }
     }
 
-    private Group buildMarkX(double x, double y, int size){
+    private Group buildMarkX(double x, double y, int size) {
         Group group = new Group();
         group.getChildren().addAll(
                 new Line(

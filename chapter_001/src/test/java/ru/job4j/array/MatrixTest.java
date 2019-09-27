@@ -12,9 +12,9 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public class MatrixTest{
+public class MatrixTest {
 	@Test
-	public void whenMatrix(){
+	public void whenMatrix() {
 		Matrix matrix = new Matrix();
 		int[][] input = matrix.multiple(2);
 		int[][] expected = { 

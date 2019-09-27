@@ -9,11 +9,11 @@ import java.util.Arrays;
 * @since 0.1
 */
 
-public class BubbleSort{
+public class BubbleSort {
 
-	public int[] sort(int[] array){
+	public int[] sort(int[] array) {
 		for (int i = 0; i < array.length; i++) {
-			for (int j = 0; j < i ; j++) {
+			for (int j = 0; j < i; j++) {
 				if (array[i] < array[j]) {
 					int temp = array[i];
 					array[i] = array[j];

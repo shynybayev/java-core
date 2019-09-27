@@ -9,17 +9,17 @@ import java.util.Arrays;
 * @since 0.1
 */
 
-public class MatrixCheck{
-	public boolean mono(boolean[][] data){
+public class MatrixCheck {
+	public boolean mono(boolean[][] data) {
 		boolean result = true;
 		int index = data.length;
 
 		for (int i = 0; i < data.length; i++) {
-			if ((data[i][i] != data[0][0])){
+			if ((data[i][i] != data[0][0])) {
 				result = false;
 				break;
 			}
-			if (data[i][index - i - 1] != data[0][index - 1]){
+			if (data[i][index - i - 1] != data[0][index - 1]) {
 				result = false;
 				break;
 			}

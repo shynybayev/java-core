@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class BubbleSortTest {
 	
 	@Test
-	public void whenSortAnArray(){
+	public void whenSortAnArray() {
 		BubbleSort bubbleSort = new BubbleSort();
 		int[] input = new int[]{2, 4, 1, 5, 3};
 		int[] result = bubbleSort.sort(input);

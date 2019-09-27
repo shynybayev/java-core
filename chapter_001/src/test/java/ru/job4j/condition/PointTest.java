@@ -13,14 +13,14 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public  class  PointTest{
+public class PointTest {
 	@Test
-	public void calculatingDistanceBetweenPoints(){
+	public void calculatingDistanceBetweenPoints() {
 		Point a = new Point(0, 1);
 		Point b = new Point(2, 5);
 		double res = a.distanceTo(b);
 		double expected = 4.47213595499958;
-		assertThat(res, closeTo(expected,0.1));
+		assertThat(res, closeTo(expected, 0.1));
 	}
 
 }

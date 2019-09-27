@@ -7,7 +7,7 @@ package ru.job4j.loop;
 * @since 0.1
 */
 
-public class Board{
+public class Board {
 
 	/**
 	* Метод рисующий шахматную доску из символов х и пробелов
@@ -15,14 +15,13 @@ public class Board{
 	* @param height высота доски
 	* @return Рисунок шахматной доски
 	*/
-	public String paint(int width, int height){
+	public String paint(int width, int height) {
 		StringBuilder screen = new StringBuilder();
 		String ln = System.lineSeparator();
 
 		for (int i = 0; i < height; i++) {
-
 			for (int j = 0; j < width; j++) {
-				if ((j+i)%2 == 0 ) {
+				if ((j + i) % 2 == 0) {
 					screen.append("X");
 				} else {
 					screen.append("a");
@@ -32,5 +31,4 @@ public class Board{
 		}
 		return screen.toString();
 	}
-
 }

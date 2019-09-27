@@ -13,9 +13,9 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public class PaintTest{
+public class PaintTest {
 	@Test
-	public void whenPyramidMain(){
+	public void whenPyramidMain() {
 		Paint paint = new Paint();
 		String res = paint.pyramid(4);
 		System.out.println(res);
@@ -32,7 +32,7 @@ public class PaintTest{
 
 
 	@Test
-	public void whenPyramidRight(){
+	public void whenPyramidRight() {
 		Paint paint = new Paint();
 		String res = paint.rightTrl(4);
 		System.out.println(res);
@@ -49,7 +49,7 @@ public class PaintTest{
 	
 
 	@Test
-	public void whenPyramidLeft(){
+	public void whenPyramidLeft() {
 		Paint paint = new Paint();
 		String res = paint.leftTrl(4);
 		System.out.println(res);

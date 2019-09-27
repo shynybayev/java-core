@@ -17,7 +17,7 @@ public class Calculator {
 	/*
 	* Метод для выполнения операции сложения
 	*/
-	public void add(double first, double second){
+	public void add(double first, double second) {
 		this.result = first + second;
 	}
 	
@@ -25,7 +25,7 @@ public class Calculator {
 	* Метод для выполнения операции вычитания
 	*/
 	
-	public void substruct(double first, double second){
+	public void substruct(double first, double second) {
 		this.result = first - second;
 	}
 	
@@ -33,14 +33,14 @@ public class Calculator {
 	* Метод для выполнения операции деления
 	*/
 	
-	public void div(double first, double second){
+	public void div(double first, double second) {
 		this.result = first / second;	
 	}
 	
 	/*
 	* Метод для выполнения операции умножения
 	*/
- 	public void multiple(double first, double second){
+ 	public void multiple(double first, double second) {
 		this.result = first * second;
 	}
 
@@ -48,7 +48,7 @@ public class Calculator {
 	 * Метод для возвращения результата
 	 * @return result
 	 */
-	public double getResult(){
+	public double getResult() {
 		return this.result;
 	}
 }

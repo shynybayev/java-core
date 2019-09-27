@@ -15,10 +15,10 @@ public class Counter {
      * @param finish второе число
      * @return Сумма четных чисел
      */
-    public static int add(int start, int finish){
+    public static int add(int start, int finish) {
         int sum = 0;
         for (int i = 0; start <= finish; start++) {
-            if (start%2 == 0) {
+            if (start % 2 == 0) {
                 sum += start;
             }
         }

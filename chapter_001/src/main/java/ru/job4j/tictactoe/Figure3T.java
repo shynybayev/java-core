@@ -7,11 +7,11 @@ import javafx.scene.shape.Rectangle;
  *  @version  1.0
  *  @since 0.1
  */
-public class Figure3T extends Rectangle{
+public class Figure3T extends Rectangle {
     private boolean markX = false;
     private boolean markO = false;
 
-    Figure3T(){
+    Figure3T() {
     }
 
     public Figure3T(boolean markX, boolean markO) {
@@ -24,11 +24,11 @@ public class Figure3T extends Rectangle{
         this.markO = !markX;
     }
 
-    public boolean hasMarkX(){
+    public boolean hasMarkX() {
         return this.markX;
     }
 
-    public boolean hasMarkO(){
+    public boolean hasMarkO() {
         return this.markO;
     }
 }

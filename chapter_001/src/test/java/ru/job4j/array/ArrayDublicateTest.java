@@ -13,10 +13,10 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public class ArrayDublicateTest{
+public class ArrayDublicateTest {
 
 	@Test
-	public void whenArrayDublicateTest(){
+	public void whenArrayDublicateTest() {
 		ArrayDublicate arrayDublicate = new ArrayDublicate();
 		String[] input = {"Hello", "Hi", "Salute", "Hi", "Privet", "Hello"};
 		String[] result = arrayDublicate.remove(input);

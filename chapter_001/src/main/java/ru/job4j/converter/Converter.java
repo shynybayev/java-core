@@ -7,14 +7,14 @@ package ru.job4j.converter;
 * @since 1.0
 */
 
-public class Converter{
+public class Converter {
 	/**
 	* Конвентируем Тенге в Евро
 	* @param value Тенге
 	* @return Евро
 	*/
 
-	public int tengeToEuro(int value){
+	public int tengeToEuro(int value) {
 		return value / 423;
 	}
 
@@ -24,7 +24,7 @@ public class Converter{
 	* @return Доллары
 	*/
 
-	public int tengeToDollar(int value){
+	public int tengeToDollar(int value) {
 		return value / 363;
 	}
 
@@ -34,7 +34,7 @@ public class Converter{
 	* @return Тенге
 	*/
 
-	public int euroToTenge(int value){
+	public int euroToTenge(int value) {
 		return value * 423;
 	}
 
@@ -44,7 +44,7 @@ public class Converter{
 	* @return Тенге
 	*/
 
-	public int dollarToTenge(int value){
+	public int dollarToTenge(int value) {
 		return value * 363;
 	}
 }

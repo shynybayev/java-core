@@ -7,10 +7,10 @@ package ru.job4j.array;
 * @since 0.1
 */
 
-public class Wrapper{
+public class Wrapper {
 	private char[] data;
 
-	public Wrapper(String line){
+	public Wrapper(String line) {
 		this.data = line.toCharArray();
 	}
 
@@ -19,7 +19,7 @@ public class Wrapper{
 	* @param prefix префикс
 	* @return если слово начинается с префикса
 	*/
-	public boolean startWith(String prefix){
+	public boolean startWith(String prefix) {
 		boolean result = true;
 		char[] value = prefix.toCharArray();
 

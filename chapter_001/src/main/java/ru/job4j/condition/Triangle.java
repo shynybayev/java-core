@@ -7,7 +7,7 @@ package ru.job4j.condition;
 * @since 0.1
 */
 
-public class Triangle{
+public class Triangle {
 	/**
 	* Точки треугольника
 	*/
@@ -15,7 +15,7 @@ public class Triangle{
 	private Point b;
 	private Point c;
 
-	public Triangle(Point a, Point b, Point c){
+	public Triangle(Point a, Point b, Point c) {
 		this.a = a;
 		this.b = b;
 		this.c = c;
@@ -30,8 +30,8 @@ public class Triangle{
 	* @return Перимент.
 	*/
 
-	public double period(double ab, double ac, double bc){
-		double p = (ab + ac + bc)/2.0;
+	public double period(double ab, double ac, double bc) {
+		double p = (ab + ac + bc) / 2.0;
 		return p;
 	}
 
@@ -39,16 +39,15 @@ public class Triangle{
 	* Метод должен вычислять площадь треугольника
 	* @return Вернуть площадь, если треугольник существует или -1, если треугольника нет.
 	*/
-	public double area(){
+	public double area() {
 		double rsl = -1.0; //Мы устанавливаем значение -1, так как может быть что треугольника нет. Это значение говорит о том, что треугольника нет.
 		double ab = this.a.distanceTo(this.b);
 		double ac = this.a.distanceTo(this.c);
 		double bc = this.b.distanceTo(this.c);
-		double p = this.period(ab, ac , bc);
+		double p = this.period(ab, ac, bc);
 		if (this.exist(ab, ac, bc)) {
 			// формула для расчета площади треугольника
 			rsl = Math.sqrt(p * (p - ab) * (p - ac) - (p - bc)); // формула Герона с переменными ab, ac, bc , p.
-
 		}
 		return rsl;
 	}
@@ -61,7 +60,7 @@ public class Triangle{
 	* @param bc Длина точки bc
 	* @return
 	*/
-	private boolean exist(double ab, double ac, double bc){
+	private boolean exist(double ab, double ac, double bc) {
 		return  ab + ac > bc && ab + bc > ac && ac + bc > ab ? true : false;
 	}
 

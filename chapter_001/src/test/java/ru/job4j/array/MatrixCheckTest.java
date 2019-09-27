@@ -12,10 +12,10 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public class MatrixCheckTest{
+public class MatrixCheckTest {
 
 	@Test
-	public void whenDataMonoByTrueThenTrue(){
+	public void whenDataMonoByTrueThenTrue() {
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
 				{true, true, true},
@@ -27,7 +27,7 @@ public class MatrixCheckTest{
 	}
 
 	@Test
-	public void whenDataNotMonoByTrueThenFalse(){
+	public void whenDataNotMonoByTrueThenFalse() {
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
 				{true, false, true},
@@ -39,7 +39,7 @@ public class MatrixCheckTest{
 	}
 
 	@Test
-	public void whenArrayWithOddAmountOfElementsThenFalse(){
+	public void whenArrayWithOddAmountOfElementsThenFalse() {
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
 				{false, false, false},
@@ -51,7 +51,7 @@ public class MatrixCheckTest{
 	}
 
 	@Test
-	public void whenArrayWithEvenAmountOfElementsThenTrue(){
+	public void whenArrayWithEvenAmountOfElementsThenTrue() {
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
 				{false, false, false, true},
@@ -64,7 +64,7 @@ public class MatrixCheckTest{
 	}
 
 	@Test
-	public void whenArrayWithEvenAmountOfElementsThenFalse(){
+	public void whenArrayWithEvenAmountOfElementsThenFalse() {
 		MatrixCheck matrixCheck = new MatrixCheck();
 		boolean[][] input = new boolean[][]{
 				{false, false, false, false},

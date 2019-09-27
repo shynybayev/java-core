@@ -7,14 +7,14 @@ package ru.job4j.max;
  * @since 0.1
  */
 
-public class Max{
-	public int max(int first , int second){
+public class Max {
+	public int max(int first, int second) {
 
 	return first > second ? first : second;
 
 	 }
 	 
-	public int max(int first, int second, int third){
+	public int max(int first, int second, int third) {
 	    return Math.max(first, Math.max(second, third));
 	}
 }

@@ -13,9 +13,9 @@ import static org.hamcrest.number.IsCloseTo.closeTo;
 * @since 0.1
 */
 
-public class TriangleTest{
+public class TriangleTest {
 	@Test
-	public void whenAreaSetThreePointsThenTriangleArea(){
+	public void whenAreaSetThreePointsThenTriangleArea() {
 		//создаем три объекта класса
 		Point a = new Point(0, 0);
 		Point b = new Point(0, 2);

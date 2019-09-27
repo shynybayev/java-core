@@ -7,13 +7,13 @@ package ru.job4j;
 * @since 1.0
 */
 
-public class HelloWorld{
+public class HelloWorld {
 
 /**
 * Метод main выводит команду на экран 
 @param args - args
 */
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		System.out.println("Hello World");
 	}
 }

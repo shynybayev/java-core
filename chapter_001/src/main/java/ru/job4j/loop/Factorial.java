@@ -7,18 +7,18 @@ package ru.job4j.loop;
 * @since 0.1
 */
 
-public class Factorial{
+public class Factorial {
 	
 	/**
 	* Метод вычитывающий факториал числа
 	* @param n число
 	* @return Результат
 	*/
-	public static int calc(int n){
+	public static int calc(int n) {
 		int i = 1;
 		int sum = 1;
 		do {
-			if (n == 0){
+			if (n == 0) {
 				return  1;
 			}
 			sum *= i;

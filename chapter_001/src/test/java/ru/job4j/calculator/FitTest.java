@@ -12,23 +12,23 @@ import static org.junit.Assert.assertThat;
 * @since 1.0
 */
 
-public class FitTest{
+public class FitTest {
 
 	/**
 	* Тест для вычисления идеального веса мужчины.
 	*/
 	@Test
-	public void manWeight(){
+	public void manWeight() {
 		Fit fit = new Fit();
 		double weight = fit.manWeight(180);
-		assertThat(weight,closeTo(92.0, 0.1));
+		assertThat(weight, closeTo(92.0, 0.1));
 	}
 
 	/**
 	* Тест для вычисления идеального веса женщины.
 	*/
 	@Test
-	public void womanWeight(){
+	public void womanWeight() {
 		Fit fit = new Fit();
 		double weight = fit.womanWeight(170);
 		assertThat(weight, closeTo(69.0, 0.1));

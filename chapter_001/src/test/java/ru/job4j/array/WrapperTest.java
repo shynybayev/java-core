@@ -12,17 +12,17 @@ import static org.junit.Assert.assertThat;
 * @since 0.1
 */
 
-public class WrapperTest{
+public class WrapperTest {
 	
 	@Test
-	public void whenStartWithPrefixThenTrue(){
+	public void whenStartWithPrefixThenTrue() {
 		Wrapper arrayChar = new Wrapper("Hello");
 		boolean result = arrayChar.startWith("He");
 		assertThat(result, is(true));
 	}
 
 	@Test
-	public void whenNotStartWithPrefixThenFalse(){
+	public void whenNotStartWithPrefixThenFalse() {
 		Wrapper arrayChar = new Wrapper("Hello");
 		boolean result = arrayChar.startWith("Hi");
 		assertThat(result, is(false));

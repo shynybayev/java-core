@@ -22,7 +22,7 @@ public class HelloWorldTest {
 	ByteArrayOutputStream out = new ByteArrayOutputStream();
 	System.setOut(new PrintStream(out));
 	HelloWorld.main(null);
-	assertThat(out.toString(),is(String.format("Hello World%s",System.getProperty("line.separator"))));
+	assertThat(out.toString(), is(String.format("Hello World%s", System.getProperty("line.separator"))));
 }
 }
  
