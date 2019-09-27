@@ -19,3 +19,9 @@ notifications:
 env:
   global:
     - CODEV_TOKEN= "792ff530-3f3b-432b-9b36-f5a4380f88a5"
+
+script:
+    - jdk_switcher use oraclejdk8
+    - # do stuff with Java 8
+#    - jdk_switcher use openjdk8
+#    - # do stuff with open Java 8
