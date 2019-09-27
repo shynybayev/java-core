@@ -19,6 +19,7 @@ public class CounterTest {
     @Test
     public void whenCounterIsTrue() {
         Counter counter = new Counter();
-        assertThat( 30, is( counter.add(1, 10)));
+        int expect = counter.add(1, 10);
+        assertThat(expect, is(30));
     }
 }
