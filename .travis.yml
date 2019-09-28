@@ -1,6 +1,5 @@
 # используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
-jdk: oraclejdk8
 install: true
 script:
 - mvn install
@@ -17,7 +16,7 @@ after_success:
 notifications:
   email:
     recipients:
-      -shynybaev@gmail.com
+      - shynybaev@gmail.com
     on_success: never
     on_failure: always
 env:
