@@ -1,8 +1,8 @@
 package ru.job4j.list;
 
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -11,6 +11,7 @@ import java.util.List;
  * @since 0.1
  */
 public class ConvertList2Array {
+
     /**
      * Конвертация списка в двумерный массив
      * @param list список
@@ -18,29 +19,23 @@ public class ConvertList2Array {
      * @return двумерный массив
      */
     public int[][] toArray(List<Integer> list, int rows) {
-        int cells = list.size() / rows;
+        Iterator<Integer> iterator = list.iterator();
+        int cells = list.size() / rows + (list.size() % rows == 0 ? 0 : 1);
+        int[][] result = new int[rows][cells];
 
-        if (cells != 0) {
-            cells += 1;
-        }
-
-        int[][] array = new int[rows][cells];
-        int index = 0;
-
-        for (int[] tempArray: array) {
-            for (int i = 0; i < cells; i++) {
-                tempArray[i] = index < list.size() ? list.get(index) : 0;
-                index++;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cells; j++) {
+                if (iterator.hasNext())
+                    result[i][j] = iterator.next();
+                else
+                    result[i][j] = 0;
             }
         }
-
-        return array;
+        return result;
     }
-
 
     public List<Integer> convert(List<int[]> listOfArray) {
         List<Integer> result = new ArrayList<>();
-
         for (int[] array : listOfArray) {
             for (int i : array) {
                 result.add(i);
